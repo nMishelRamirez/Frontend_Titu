@@ -1,0 +1,50 @@
+<!-- Barra de navegación / Logo -->
+<header class="navbar-logo">
+  <a routerLink="/" class="logo-link">
+    <img src="/img/logo5.svg" alt="Logo" width="100" />
+  </a>
+</header>
+
+<!-- Contenedor principal con display flex -->
+<div class="main-container">
+
+  <!-- Sección del formulario de Restablecer Contraseña -->
+  <div class="reset-password-container">
+    <h2>Restablecer Contraseña</h2>
+    <p>
+      Ingresa la dirección de correo electrónico verificada de tu cuenta y te enviaremos
+      un enlace de restablecimiento de contraseña.
+    </p>
+
+    <form (submit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          placeholder="Ingresa tu correo electrónico"
+          [class.invalid]="errorMessage"
+        />
+      </div>
+
+      <!-- Mensajes de error -->
+      <div *ngIf="errorMessage" class="message error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+
+      <!-- Mensajes de éxito -->
+      <div *ngIf="successMessage" class="message success-message">
+        <p>{{ successMessage }}</p>
+      </div>
+
+      <button type="submit" class="btn-primary">
+        Enviar Enlace de Restablecimiento
+      </button>
+    </form>
+  </div>
+  
+
+</div>

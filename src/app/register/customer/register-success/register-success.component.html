@@ -1,0 +1,7 @@
+<!-- Modal de registro exitoso -->
+<div *ngIf="showModalSuccess" class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>¡Registro Exitoso!</h2>
+    <img src="/assets/images/IconoRE.png" alt="Icono">
+  </div>
+</div>

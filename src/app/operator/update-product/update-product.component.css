@@ -1,0 +1,169 @@
+/* Contenedor principal */
+.container {
+    border: 2px solid #b6d2f2; /* Borde con color azul */
+    border-radius: 15px; /* Bordes redondeados */
+      margin: auto;
+      width: 1030px; /* Ancho adaptable */
+      height: 550px;
+      background-color: rgb(237, 241, 248);
+  
+    }
+  
+  .titulo{
+      text-align: center;
+      width: 100%;
+      font-size: 40px;
+      margin-top: 10px;
+      padding-top: 10px;
+      padding-left: 20px;
+      margin-left: 60px;
+  }
+  .formulario{
+      width: 500px; 
+      padding: 20px;
+      float: right
+  
+  }
+  
+  
+  .precio{
+      margin-top: 10px;
+      width: 100px;
+      float:left;
+  }
+  .stock{
+      margin-top: 10px;
+      width: 100px;
+      float: left;
+      margin-left: 100px;
+  }
+  .categoria{
+    margin-top: 10px;
+      float:left;
+      width: 100%;
+  }
+  .descripcion{
+      margin-top:160px;
+      /*border: #721c24 solid 2px;*/
+  }
+  
+  
+  .uploaded-image {
+      display: flex; /* Asegura el uso de flexbox */
+      justify-content: center; /* Centra la imagen horizontalmente */
+      align-items: center; /* Centra la imagen verticalmente */
+      width: 100%; /* Asegura que ocupe todo el ancho disponible */
+      height: 100%; /* Asegura que ocupe toda la altura disponible */
+      overflow: hidden; /* Oculta las partes de la imagen que se salgan del contenedor */
+    }
+    
+    .uploaded-image img {
+      max-width: 100%; /* Asegura que la imagen no sea más ancha que el contenedor */
+      max-height: 100%; /* Asegura que la imagen no sea más alta que el contenedor */
+      object-fit: contain; /* Mantiene la relación de aspecto dentro del contenedor */
+      border-radius: 8px; /* Aplica esquinas redondeadas */
+    }
+    
+    .dropzone {
+      margin-left: 20px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      padding: 0; /* Elimina el padding interno */
+      display: flex; /* Activa flexbox para centrar el contenido */
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center; /* Centra verticalmente */
+      width: 500px; /* Ancho fijo */
+      height: 350px; /* Altura fija */
+      border: 2px dashed #ccc; /* Borde estilo "dashed" */
+      border-radius: 10px; /* Esquinas redondeadas */
+      background-color: #f9f9f9; /* Fondo claro */
+    }
+    
+    .dropzone:hover {
+      background-color: #e6e6e6; /* Fondo más oscuro al pasar el mouse */
+    }
+    
+    .hidden {
+      display: none;
+    }
+  
+  
+  
+  .boton{
+      margin-bottom: 10px;
+      width: 57%;
+      float : right;
+      /*border: 2px solid black;*/
+  }
+  
+  .cancelar{
+      float: left;
+      /*border: 2px solid black;*/
+      width: 30%;
+      margin-left: 10px;
+  }
+  
+  
+  
+  .message {
+      float: right;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-right: 100px;
+    }
+    .message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+  
+    /* Media queries para ajustes */
+    @media (max-width: 768px) {
+      .formulario {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+      }
+    
+      .botones {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .botones button {
+        width: 100%; /* Botones ocupan todo el ancho */
+      }
+    }
+  
+  
+  
+  
+    .success-message {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #4caf50;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      animation: fadeInOut 3s ease-in-out;
+    }
+    
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      10%, 90% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+    

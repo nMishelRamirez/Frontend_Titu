@@ -1,0 +1,39 @@
+<!-- Barra lateral de íconos (posicionada al lado derecho) -->
+<div class="fixed right-0 top-0 h-full bg-[#3B82F6] sidebar flex flex-col space-y-6 p-16" style="z-index: 1000;">
+  <!-- Ícono de Menú -->
+  <button class="p-3 bg-[#3B82F6] text-white rounded-full flex items-center space-x-2 icon-button menu-button">
+    <span class="material-icons">menu</span>
+    <span class="sidebar-content">Menú</span>
+  </button>
+
+  <!-- Ícono de Usuario -->
+  <div class="p-4 bg-[#3B82F6] text-white rounded-full flex items-center space-x-2 icon-button usuario-button">
+    <span class="material-icons">account_circle</span>
+    <span class="sidebar-content">Usuario</span>
+  </div>
+
+  <!-- Enlaces de Regístrate e Iniciar sesión 
+  <div class="p-0 bg-[#3B82F6] text-white rounded-full flex flex-col items-start space-y-2 icon-button enlaces-button">
+    <a href="registrarse.html" class="text-white sidebar-content">Regístrate</a>
+    <a href="iniciar_sesion.html" class="text-white sidebar-content">Iniciar sesión</a>
+  </div> -->
+
+  <!-- Enlaces de Regístrate e Iniciar sesión -->
+  <div class="p-0 bg-[#3B82F6] text-white rounded-full flex flex-col items-start space-y-2 icon-button enlaces-button">
+  <!-- Enlace para abrir el modal de "Regístrate" -->
+  <button (click)="openModalCustomer()" class="text-white sidebar-content">Regístrate</button>
+  <!-- Modal -->
+   <div [ngClass]="{'modal modal-open': isModalCustomerOpen, 'modal': !isModalCustomerOpen}">
+    <div class="modal-content">
+      <app-register [isOpen]="isModalCustomerOpen"  (close)="closeModalCustomer()"></app-register>
+    </div>
+</div>  
+  <!-- Enlace para abrir el modal de "Iniciar sesión"
+  <button (click)="isModalSessionOpen()" class="text-white sidebar-content">Iniciar sesión</button> -->
+</div>
+  <!-- Ícono de Ayuda -->
+  <button class="p-3 bg-[#3B82F6] text-white rounded-full flex items-center space-x-2 icon-button help-button">
+    <span class="material-icons">help_outline</span>
+    <span class="sidebar-content">Ayuda</span>
+  </button>
+</div>

@@ -1,0 +1,53 @@
+<!-- Encabezado de la tabla -->
+<div class="container mx-auto max-w-screen-xl mt-10 text-center">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-4">Administración de productos</h2>
+  </div>
+  
+  <!-- Tabla de productos -->
+  <div class="overflow-x-auto mx-auto max-w-4xl">
+    <table mat-table [dataSource]="productos" class="mat-elevation-z8 w-full table-auto">
+      <!-- Columna: Nombre -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left text-sm font-medium text-gray-700"> Nombre </th>
+        <td mat-cell *matCellDef="let element" class="px-4 py-2 text-sm text-gray-600"> {{ element.name }} </td>
+      </ng-container>
+    
+      <!-- Columna: Categoría -->
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left text-sm font-medium text-gray-700"> Categoría </th>
+        <td mat-cell *matCellDef="let element" class="px-4 py-2 text-sm text-gray-600"> {{ element.category }} </td>
+      </ng-container>
+    
+      <!-- Columna: Descripción -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left text-sm font-medium text-gray-700"> Descripción </th>
+        <td mat-cell *matCellDef="let element" class="px-4 py-2 text-sm text-gray-600"> {{ element.description }} </td>
+      </ng-container>
+    
+      <!-- Columna: Precio -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left text-sm font-medium text-gray-700"> Precio </th>
+        <td mat-cell *matCellDef="let element" class="px-4 py-2 text-sm text-gray-600"> {{ element.price | currency }} </td>
+      </ng-container>
+    
+      <!-- Columna: Stock -->
+      <ng-container matColumnDef="stock">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left text-sm font-medium text-gray-700"> Stock </th>
+        <td mat-cell *matCellDef="let element" class="px-4 py-2 text-sm text-gray-600"> {{ element.stock }} </td>
+      </ng-container>
+    
+      <!-- Columna: Imagen -->
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef class="px-4 py-2 text-left text-sm font-medium text-gray-700"> Imagen </th>
+        <td mat-cell *matCellDef="let element" class="px-4 py-2 text-sm text-gray-600">
+          <img [src]="element.image" alt="{{ element.name }}" width="50" />
+        </td>
+      </ng-container>
+    
+      <!-- Header Row -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-gray-100"></tr>
+      <!-- Data Row -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="odd:bg-gray-50 even:bg-white"></tr>
+    </table>
+  </div>
+  

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interfaz de Registro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+    /* Estilo para el modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: -2.1%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999; /* Asegura que el modal quede encima de todos los demás elementos */
+      visibility: hidden; /* Inicialmente oculto */
+    }
+
+    .modal.open {
+      visibility: visible; /* Muestra el modal cuando está activo */
+    }
+
+    body.modal-open {
+      overflow: hidden; /* Desactiva el scroll en el body cuando el modal esté abierto */
+    }
+
+  </style>
+</head>
+<body class="bg-gray-300 font-sans min-h-screen flex flex-col">
+
+  <!-- Contenedor principal -->
+  <div class="flex flex-col items-center justify-center flex-1 relative">
+
+    <!-- Encabezado -->
+    <header class="mb-8">
+      <h1 class="encabezado">Bienvenido a Titu</h1>
+    </header>
+
+    <!-- Contenedor de las dos secciones -->
+    <div class="flex flex-col md:flex-row justify-center items-center w-full max-w-6xl -space-y-8 md:space-y-0 md:space-x-8 p-4">
+      
+      <!-- Sección izquierda: Registro del Operador -->
+      <button class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center w-full md:w-1/2 hover:bg-gray-200 focus:outline-none" (click)="openModalOperator()">
+        <div class="w-full text-center mb-4">
+          <h2 class="text-5xl font-semibold mb-4 text-center block w-full">Registro del</h2>
+          <h3 class="text-5xl font-semibold mb-4 text-center block w-full">Operador</h3>
+        </div>
+        <div class="w-full flex justify-center">
+          <img src="/assets/images/Operador.png" alt="Operador" class="img">
+        </div>
+      </button>
+      <!-- Contenedor del modal -->
+      <div *ngIf="isModalOperatorOpen" class="modal open">
+        <div class="modal-content">
+          <app-register-operator [isOpen]="isModalOperatorOpen" (close)="closeModalOperator()"></app-register-operator>
+        </div>
+      </div>
+      
+      <!-- Sección derecha: Registro del Administrador -->
+      <button class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center w-full md:w-1/2 hover:bg-gray-200 min-h-96" (click)="openModalAdmin()">
+        <h2 class="text-5xl font-semibold mb-4 text-center">Registro del</h2>
+        <h3 class="text-5xl font-semibold mb-4 text-center">Administrador</h3>
+        <div class="w-full flex justify-center">
+          <img src="/assets/images/Admin.png" alt="Administrador" class="img">
+        </div>
+      </button>
+
+      <div *ngIf="isModalAdminOpen" class="modal open">
+        <div class="modal-content">
+          <app-register-admin [isOpen]="isModalAdminOpen" (close)="isModalAdminOpen = false"></app-register-admin>
+        </div>
+      </div>
+    </div>
+    <!-- Barra lateral de íconos (posicionada al lado derecho) -->
+    <app-sidebar></app-sidebar>
+  </div>
+</body>
+</html>

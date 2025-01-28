@@ -1,0 +1,48 @@
+<div class="login-section">
+  <h2>Inicia Sesión</h2>
+  <p>Ingresa tus credenciales para continuar</p>
+
+  <form (submit)="onSubmit()">
+    <input type="email" placeholder="Email" name="email" [(ngModel)]="email" required #emailInput="ngModel"
+      [class.invalid]="emailInput.invalid && emailInput.touched">
+
+    <div class="password-container">
+      <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="password" required
+        #passwordInput="ngModel" [class.invalid]="passwordInput.invalid && passwordInput.touched" id="password">
+      <span class="toggle-password" (click)="togglePasswordVisibility()">👁</span>
+      <a href="/new-pass" class="forgot-password">¿Has olvidado tu contraseña?</a>
+    </div>
+
+    <button type="submit" class="btn-primary">Iniciar Sesión</button>
+
+    <!-- Mensajes de error 
+    <p *ngIf="error === 'bloqueada'" class="error">
+      Tu cuenta ha sido bloqueada temporalmente. Intenta de nuevo en 30 minutos o restablece tu contraseña.
+    </p>
+    <p *ngIf="error === 'desactivada'" class="error">
+      Tu cuenta ha sido desactivada debido a inactividad. Contacta con el soporte.
+    </p>
+    <p *ngIf="error === 'no-registrado'" class="error">
+      El correo electrónico no está registrado. Verifica o crea una cuenta.
+    </p>
+    <p *ngIf="error === 'password'" class="error">Contraseña incorrecta. Inténtalo de nuevo.</p>
+    <p *ngIf="error === 'cuenta-inactiva'" class="error">
+      Tu cuenta no ha sido verificada. Revisa tu correo electrónico.
+    </p>-->
+  </form>
+
+  <div *ngIf="loginMessage" class="message" [class.success]="loginSuccess" [class.error]="!loginSuccess">
+    {{ loginMessage }}
+  </div>
+
+  <p>¿No tienes una cuenta?
+    <button (click)="openModalCustomer()" class="text-blue-500 hover:underline sidebar-content">Registrarse</button>
+  </p>
+  <!-- Modal -->
+  <div [ngClass]="{'modal modal-open': isModalCustomerOpen, 'modal': !isModalCustomerOpen}">
+    <div class="modal-content">
+      <app-register [isOpen]="isModalCustomerOpen" (close)="closeModalCustomer()"></app-register>
+    </div>
+  </div>
+</div>
+<app-login-welcome *ngIf="showWelcome" [userName]="userName" [role]="role" (close)="closeWelcome()"></app-login-welcome>

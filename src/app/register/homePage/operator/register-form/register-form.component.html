@@ -1,0 +1,48 @@
+<div class="register-section">
+  <h2>Regístrate</h2>
+  <form id="register-form" (submit)="submitForm()">
+    <!-- Campo Nombre y Apellido -->
+    <div class="form-group">
+      <label for="name">Nombre y Apellido*</label>
+      <input type="text" placeholder="Nombre y Apellido*" name="name" id="name" [(ngModel)]="form.name"
+        (focus)="clearError('name')" (blur)="validateName()" required>
+      <span id="name-error" class="error-message" style="display:none;"></span>
+    </div>
+
+    <!-- Campo Email -->
+    <div class="form-group">
+      <label for="email">Email*</label>
+      <input type="email" placeholder="Email*" name="email" id="email" [(ngModel)]="form.email"
+        (focus)="clearError('email')" (blur)="validateEmail()" required>
+      <span id="email-error" class="error-message" style="display:none;"></span>
+    </div>
+
+    <!-- Campo Teléfono -->
+    <div class="form-group">
+      <label for="phone">Número de teléfono</label>
+      <input type="tel" placeholder="Número de teléfono" name="phone" id="phone" [(ngModel)]="form.phone"
+        (focus)="clearError('phone')" (blur)="validatePhone()" required>
+      <span id="phone-error" class="error-message" style="display:none;"></span>
+    </div>
+    
+    <!-- Campo Dirección -->
+    <div class="form-group">
+      <label for="address">Dirección*</label>
+      <input type="text" placeholder="Dirección*" name="address" id="address" [(ngModel)]="form.address"
+        (focus)="clearError('address')" (blur)="validateAddress()" required>
+      <span id="address-error" class="error-message" style="display:none;"></span>
+    </div>
+
+    <!-- Botón para enviar el formulario -->
+    <button type="submit" class="btn-primary">
+      Regístrate
+    </button>
+  </form>
+      
+  <p class="login-link">
+    ¿Ya tienes una cuenta? <a href="#">Iniciar sesión</a>
+  </p>
+  <!-- Modal de éxito del registro -->
+  <app-register-success *ngIf="showSuccessModal" (close)="closeSuccessModal()"></app-register-success>
+  <app-notification></app-notification>
+</div>

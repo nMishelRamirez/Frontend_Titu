@@ -1,0 +1,66 @@
+<section class="py-16 bg-gray-50 dark:bg-gray-100 antialiased relative" style="background-image: url('https://img.chemie.de/Portal/News/660fa3705e50b_G1Y3xihSs.jpg?tr=w-2244,h-1122,cm-extract,x-281,y-246:n-news_teaser'); background-size: cover; background-position: center;">
+  <div class="max-w-screen-lg px-6 mx-auto relative z-10">
+    <!-- Contenedor de tu header -->
+    <header class="absolute top-0 left-0 w-full z-20 bg-opacity-80 bg-gray-900"></header>
+    
+    <!-- Contenido principal -->
+    <div class="flex flex-col lg:flex-row items-start lg:space-x-8 space-y-8 lg:space-y-0 lg:justify-between lg:items-start pt-20">
+      <!-- Imagen del producto (a la izquierda y grande) -->
+      <div class="w-full lg:w-1/2 transition-all duration-300 transform hover:scale-110 rounded-lg overflow-hidden lg:mt-0">
+        <img
+          class="w-full rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-500"
+          [src]="productDetailState.product()?.image"
+          alt="Imagen del producto"
+        />
+      </div>
+
+      <!-- Información del producto -->
+      <div class="w-full lg:w-1/2 space-y-4 bg-white p-6 rounded-lg shadow-lg border border-gray-300">
+        <!-- Nombre del producto con fondo de color -->
+        <div class="w-full bg-gray-200 p-4 rounded-lg">
+          <h1 class="text-4xl font-semibold text-gray-900 dark:text-black">
+            {{ productDetailState.product()?.name }}
+          </h1>
+        </div>
+
+        <!-- Descripción del producto -->
+        <div class="w-full">
+          <h2 class="text-lg font-semibold">Descripción</h2>
+          <p class="text-base font-medium text-gray-800 dark:text-gray-400">
+            {{ productDetailState.product()?.description }}
+          </p>
+        </div>
+
+        <!-- Precio del producto -->
+        <div class="w-full">
+          <h2 class="text-lg font-semibold">Precio</h2>
+          <p class="text-2xl font-extrabold text-green-600 dark:text-green-400">
+            {{ productDetailState.product()?.price | currency }}
+          </p>
+        </div>
+
+        <!-- Stock del producto -->
+        <div class="w-full">
+          <h2 class="text-lg font-semibold">Stock</h2>
+          <p class="text-base font-medium text-gray-800 dark:text-gray-400">
+            {{ productDetailState.product()?.stock }}
+          </p>
+        </div>
+
+        <!-- Botón agregar al carrito -->
+        <div class="mt-6">
+          <button
+            class="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-medium transition duration-300 transform hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-500 flex items-center justify-center space-x-2"
+            [disabled]="productDetailState.product()?.stock === 0"
+            (click)="addToCart()">
+            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
+            </svg>
+            <span>Agregar al carrito</span>
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>

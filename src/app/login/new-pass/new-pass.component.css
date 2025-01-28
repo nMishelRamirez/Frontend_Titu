@@ -1,0 +1,161 @@
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5; /* Gris suave */
+  color: #333; /* Color base del texto */
+  height: 100%;
+}
+
+/* ---------------------------
+ / Logo
+---------------------------- */
+.navbar-logo {
+  width: 100%;
+  padding: 15px 0;
+  background-color: #fff;
+  display: flex;
+  justify-content: center; 
+  box-shadow: 0 15px 6px rgba(0, 0, 0, 0.05);
+  background-color: var(--primary-color);
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* ---------------------------
+   Contenedor principal
+---------------------------- */
+.reset-password-container {
+  max-width: 420px;
+  margin: 40px auto; /* Separación desde la parte superior */
+  padding: 30px 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado principal */
+.reset-password-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+/* Texto introductorio */
+.reset-password-container p {
+  text-align: center;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  line-height: 1.4;
+  color: #555;
+}
+
+/* ---------------------------
+   Campos de Formulario
+---------------------------- */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff; /* Azul al hacer foco */
+}
+
+.invalid {
+  border-color: red !important;
+}
+
+/* ---------------------------
+   Botón principal
+---------------------------- */
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  text-align: center;
+  color: #ffffff;
+  background-color: #007bff; /* Azul principal */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* ---------------------------
+   Mensajes de error y éxito
+---------------------------- */
+.message {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.error-message p {
+  color: #a94442;
+}
+
+.success-message {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.success-message p {
+  color: #155724;
+}
+
+/* ---------------------------
+   Diseño responsivo
+---------------------------- */
+@media (max-width: 480px) {
+  .reset-password-container {
+    margin: 20px auto;
+    padding: 20px 15px;
+  }
+  
+  .reset-password-container h2 {
+    font-size: 1.4rem;
+  }
+  
+  .btn-primary {
+    padding: 12px;
+  }
+}

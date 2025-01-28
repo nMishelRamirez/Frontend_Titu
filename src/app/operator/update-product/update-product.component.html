@@ -1,0 +1,109 @@
+
+<div class="container">
+
+    <div class="titulo">
+      <h1 class="flex items-center text-5xl font-extrabold dark:text-black">
+        Actualizacion de stock
+        <span class="bg-blue-100 text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-2">
+          OPERADOR
+        </span>
+      </h1>
+    </div>
+  
+    <div class="formulario">
+      <div class="nombre">
+        <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Nombre</label>
+        <input type="text" id="nombre" [(ngModel)]="nombre" 
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      </div>
+  
+      <div class="precio">
+        <label for="precio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Precio</label>
+            <input type="text" id="precio" [(ngModel)]="precio" 
+          
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      </div>
+  
+      <div class="stock">
+        <label for="stock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Stock</label>
+        <input type="text" id="stock" [(ngModel)]="stock" 
+          (input)="formatStock($event)" 
+          class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      </div>
+
+      <div class="categoria">
+        <label for="categoria" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+          Selecciona una categoría
+        </label>
+        <select id="categoria" [(ngModel)]="categoria"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+          <!-- Lista de categorías obtenida desde el servicio -->
+          <option *ngFor="let category of categories" [value]="category._id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+      
+      
+      <div class="descripcion">
+        <label for="descripcion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Descripcion</label>
+        <textarea id="descripcion" [(ngModel)]="descripcion" rows="4" 
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+      </div>
+    </div>
+  
+    <div class="dropzone-container">
+      <label for="dropzone-file" class="dropzone">
+        <div *ngIf="!imagePreview; else imageUploaded" 
+          class="flex flex-col items-center justify-center pt-5 pb-6">
+          <svg class="w-8 h-8 mb-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5A5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+          </svg>
+          <p class="mb-2 text-sm text-gray-500">
+            <span class="font-semibold">Haz clic para subir</span> la imagen del producto
+          </p>
+          <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+        </div>
+        <ng-template #imageUploaded>
+          <div class="uploaded-image">
+           <img [src]="imagePreview" alt="Vista previa de la imagen" />
+          </div>
+        </ng-template>
+        <input id="dropzone-file" type="file" class="hidden" 
+            (change)="onFileSelected($event)" />
+      </label>
+    </div>
+  
+     <!-- Mensaje de éxito -->
+     <div *ngIf="showSuccessMessage" class="success-message">
+      Producto actualizado exitosamente.
+    </div>
+  
+  
+  
+  
+    <div class="cancelar">
+      <button 
+        type="button" 
+        class="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 
+          focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 
+          dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+        (click)="onCancelAndGoBack()"> <!-- Llamar al método de redirección -->
+        Cancelar y volver
+      </button>
+    </div>
+  
+    <div class="boton">
+ <!-- Botón de actualización -->
+<button (click)="updateProduct()" type="button" 
+class="px-6 py-3.5 text-base font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none 
+focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+Actualizar producto
+</button>
+
+
+  
+  </div>
+  

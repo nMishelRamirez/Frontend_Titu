@@ -1,0 +1,101 @@
+<div class="rounded-lg border bg-white p-3 dark:border-gray-700 md:p-4">
+
+  <!-- Titulo del producto -->
+  <div class="w-full flex justify-center">
+    <a class="text-2xl font-bold hover:underline text-center">
+      {{ productCartItem().product.name }}
+    </a>
+  </div>
+
+  <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-4 md:space-y-0">
+    <!-- Imagen del producto a la izquierda -->
+    <a class="shrink-0 md:order-1 w-1/4">
+      <img class="h-auto w-full rounded-lg shadow-md" [src]="productCartItem().product.image" alt="product image" />
+    </a>
+
+    <!-- Descripción y Stock-->
+    <div class="flex flex-col items-start space-y-2 md:order-2 mb-6">
+      <div class="w-full">
+        <h1 class="text-lg font-semibold inline-block">Descripción</h1>
+        <p class="text-sm font-medium text-gray-800 dark:text-gray-400 inline-block ml-2">
+          {{ productCartItem().product.description }}
+        </p>
+      </div>
+
+      <div class="w-full mt-2">
+        <h1 class="text-lg font-semibold inline-block">Stock</h1>
+        <p class="text-sm font-medium text-gray-800 dark:text-gray-400 inline-block ml-2">
+          {{ productCartItem().product.stock }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Precio a la derecha -->
+    <div class="text-end md:order-3 md:w-32">
+      <p class="text-xl font-bold text-blue-700">
+        {{ productCartItem().product.price | currency }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Controles de cantidad y Eliminar en la parte inferior -->
+  <div class="flex items-center justify-between mt-3">
+
+    <!-- Botones de Decremento e Incremento -->
+    <div class="flex items-center space-x-2 p-2 border-2 rounded-full border-black">
+      <!-- Botón Decremento -->
+      <button type="button"
+        class="inline-flex rounded-full h-6 w-6 items-center justify-center bg-black text-white font-bold hover:bg-gray-600"
+        [disabled]="productCartItem().quantity === 1" (click)="onDecrease.emit(productCartItem())">
+        <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+        </svg>
+      </button>
+
+      <!-- Input para la cantidad -->
+      <input type="text" class="w-10 text-center text-lg font-bold text-gray-900" placeholder=""
+        [value]="productCartItem().quantity" disabled required />
+
+      <!-- Botón Incremento -->
+      <button type="button"
+        class="inline-flex rounded-full h-6 w-6 items-center justify-center bg-black text-white font-bold hover:bg-gray-600"
+        [disabled]="productCartItem().quantity >= productCartItem().product.stock"
+        (click)="onIncrease.emit(productCartItem())">
+        <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 1v16M1 9h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Botón Eliminar -->
+    <button type="button"
+      *ngIf="!isRemoving"
+      class="inline-flex items-center text-lg font-medium text-red-600 hover:underline dark:text-red-500"
+      (click)="onRemoveProduct(productCartItem().product._id)" [disabled]="productCartItem().quantity == 0">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M6 6h12M6 6l1 14h10l1-14M9 10h6M10 4h4a1 1 0 00.993-.883L16 4h-4l-.993.117A1 1 0 0010 4H9.993A1 1 0 009 4h-.000z" />
+      </svg>
+      Eliminar
+    </button>
+
+      <!-- Botón de deshacer, visible solo cuando estamos en proceso de eliminación -->
+    <button *ngIf="isRemoving" type="button"
+    class="inline-flex items-center text-lg font-medium text-blue-600 hover:underline dark:text-blue-500"
+    (click)="undoRemove()">
+
+      <svg class="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+      fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M19 9l-7 7-7-7" />
+      </svg>
+      Deshacer
+    </button>
+    <!-- Mostrar el contador de tiempo restante junto al botón "Deshacer" -->
+    <div *ngIf="isRemoving" class="text-lg text-black ml-2">
+      <span> {{ remainingTime }}</span>
+    </div>
+  </div>
+
+</div>

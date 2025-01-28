@@ -1,0 +1,139 @@
+<!-- Navbar -->
+<div class="navbar">
+  <div
+    class="container mx-auto max-w-screen-xl p-2 flex items-center justify-between space-x-4"
+  >
+    <div class="navbar-logo">
+      <a routerLink="/" class="flex items-center space-x-2">
+        <img width="100px" src="/img/logo5.svg" alt="Logo" />
+      </a>
+    </div>
+
+    <!-- Barra de búsqueda -->
+    <form
+      [formGroup]="searchForm"
+      (ngSubmit)="onSearch()"
+      class="search-bar flex items-center bg-white p-2 rounded-full shadow-sm w-full max-w-md border border-neutral-500"
+    >
+      <input
+        type="text"
+        formControlName="searchText"
+        class="flex-grow p-2 pl-2 text-sm text-gray-700 bg-transparent placeholder-gray-400 focus:outline-none"
+        placeholder="Buscar productos"
+        style="background-color: white"
+      />
+
+      <!-- Boton de búsqueda -->
+      <button
+        type="submit"
+        class="ml-2 p-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 border border-neutral-500"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          style="fill: black"
+        >
+          <path
+            d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"
+          ></path>
+        </svg>
+      </button>
+    </form>
+
+    <div class="navbar-links flex items-center justify-between space-x-4">
+      @if (isLogged) {
+        <!-- User Profile Dropdown Menu -->
+        <button
+        type="button"
+        class="relative flex text-sm bg-neutral-600 rounded-full md:me-0 focus:ring-4 focus:ring-neutral-300 dark:focus:ring-neutral-100"
+        (click)="toggleDropdown()"
+        [attr.aria-expanded]="isDropdownOpen ? 'true' : 'false'"
+        >
+        <span class="sr-only">Open user menu</span>
+        <div class="w-9 h-9 rounded-full bg-black flex items-center justify-center text-white font-bold hover:bg-white hover:text-black">
+          {{ primerLetaMayus(userEmail) }}
+        </div>
+
+        <!-- Dropdown menu -->
+        <div
+        *ngIf="isDropdownOpen"
+        class="absolute top-8 right-0 z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm min-w-40"
+        id="user-dropdown"
+        >
+        <div class="px-4 py-3">
+          <span class="block text-sm text-gray-900 font-semibold">{{ userEmail }}</span>
+          <span class="block text-sm text-gray-500 truncate font-bold">Cuenta</span>
+        </div>
+        <ul class="py-2" aria-labelledby="user-menu-button">
+          <!-- <li>
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >Perfil</a
+            >
+          </li> -->
+          <li>
+            <a
+              (click)="logout()"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >Cerrar sesión</a
+            >
+          </li>
+        </ul>
+        </div>
+        </button>
+      } @else {
+        <!-- Enlace de usuario -->
+        <a routerLink="/login" class="flex items-center text-black hover:text-white">
+          <!-- Logo de usuario -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 24 24"
+            class="fill-current"
+          >
+            <path
+              d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"
+            ></path>
+          </svg>
+          <span class="ml-2">Iniciar sesión</span>
+        </a>
+      }
+
+      <!-- Enlace de carrito -->
+      <a
+        routerLink="/cart"
+        class="flex items-center text-black hover:text-white relative"
+      >
+        <!-- Logo carrito -->
+        <button class="relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            viewBox="0 0 24 24"
+            class="fill-current"
+          >
+            <path
+              d="M21.822 7.431A1 1 0 0 0 21 7H7.333L6.179 4.23A1.994 1.994 0 0 0 4.333 3H2v2h2.333l4.744 11.385A1 1 0 0 0 10 17h8c.417 0 .79-.259.937-.648l3-8a1 1 0 0 0-.115-.921zM17.307 15h-6.64l-2.5-6h11.39l-2.25 6z"
+            ></path>
+            <circle cx="10.5" cy="19.5" r="1.5"></circle>
+            <circle cx="17.5" cy="19.5" r="1.5"></circle>
+          </svg>
+
+          @if (cartState.count() > 0) {
+          <span
+            class="absolute top-0 right-0 translate-x-2 -translate-y-1 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+            >{{ cartState.count() }}</span
+          >
+          }
+        </button>
+
+        <span class="ml-2">Carrito</span>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.btn-primary:hover {
+  background-color: #2874a6;
+}
+
+/*Formulario de registro*/
+.register-section {
+  background-color: #e0e0e0;
+  padding: 40px;
+  width: 100%;
+  height: 105%;
+}
+
+.register-section h2 {
+  font-weight: bold;
+  font-size: 35px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Contenedor del campo de formulario */
+.form-group {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 95%;
+  padding: 3px;
+  border: 2px solid #cbd5e0; /* Gris claro */
+  border-radius: 0.50rem;
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+
+.password-container {
+  display: flex;
+  position: relative;
+  align-items: center; /* Alinea el contenedor con el texto */
+  padding: 1px 5px;
+}
+
+.toggle-password {
+  cursor: pointer;
+  font-size: 19px;
+  color: gray;
+  user-select: none;
+  position: absolute;
+  right: 25px;
+  top: 46%;
+  cursor: pointer;
+  color: #555;
+}
+
+.toggle-password:hover {    
+  color: #4299e1;
+}
+
+.error-message {
+  color: #856404;
+  font-size: 14px;
+  padding: 3px;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  top: calc(80% + 5px);
+  left: 0;
+  width: calc(103% - 25px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  align-items: center;
+  z-index: 1;
+}
+
+.error-message::before {
+  content: '⚠️';
+  margin-right: 2px;
+  font-size: 15px;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+.login-link a {
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+  color: #6c3483;
+}

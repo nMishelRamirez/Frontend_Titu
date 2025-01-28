@@ -1,0 +1,30 @@
+<div class="hidden md:flex flex-col w-64 bg-white relative h-full">
+  <div class="flex items-center justify-center h-16 bg-neutral-500">
+    <span class="text-white font-bold uppercase">Filtros</span>
+  </div>
+  <div class="flex flex-col flex-1">
+    <nav class="flex-1 px-2 py-4 bg-white">
+      <div class="flex items-center px-4 py-2 text-black hover:bg-neutral-50">
+        <app-price-range (addPriceRangeEvent)="handlePriceRange($event)" [maxPriceInput]="searchState.state.maxPrice()" />
+      </div>
+
+      <div class="flex items-center px-4 py-2 text-black">
+        <div>
+          <h5>Ordenar por</h5>
+
+          <button
+            (click)="handleOrderBy('price-asc')"
+            class="text-black hover:bg-neutral-300 rounded-lg text-sm px-5 py-2.5 border border-neutral-700 block mt-3"
+            >Precio: Del más bajo al más alto</button
+          >
+
+          <button
+            (click)="handleOrderBy('price-desc')"
+            class="text-black hover:bg-neutral-300 rounded-lg text-sm px-5 py-2.5 border border-neutral-700 block mt-3"
+            >Precio: Del más alto al más bajo</button
+          >
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

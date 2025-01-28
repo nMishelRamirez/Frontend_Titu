@@ -1,0 +1,18 @@
+<!-- Modal de Verificación de Seguridad -->
+<div class="modal-overlay" *ngIf="showModalSecurity" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Verificación de Seguridad</h2>
+    <!-- hCaptcha -->
+    <h-captcha 
+      [attr.site-key]="siteKey" 
+      (verified)="onCaptchaVerified($event)" 
+      (error)="onCaptchaError($event)">
+    </h-captcha>
+
+    <div *ngIf="captchaVerified">
+      <p>No eres un robot</p>
+    </div>
+
+    <div *ngIf="captchaFailed">
+      <p>Eres un robot</p>
+</div>
