@@ -41,7 +41,7 @@ export const routes: Routes = [
     //{path: 'payment-cancel', component: PagoCanceladoComponent}, // Ruta para el pago cancelado
     {path: 'operator/table-products', component: TableProductsComponent},
     {path: 'new-pass', component: NewPassComponent},
-    {path: 'operator/update-product'},
+    {path: 'operator/update-product', component: UpdateProductComponent},
     {
       path: '**',
       redirectTo: '',
