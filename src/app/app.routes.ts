@@ -39,7 +39,7 @@ export const routes: Routes = [
     {path: 'politicas-privacidad', component: PoliticasPrivacidadComponent},
     {path: 'terminos-condiciones', component: TerminosCondicionesComponent},
     //{path: 'payment-cancel', component: PagoCanceladoComponent}, // Ruta para el pago cancelado
-    {path: 'operator/table-products'},
+    {path: 'operator/table-products', component: TableProductsComponent},
     {path: 'new-pass', component: NewPassComponent},
     {path: 'operator/update-product'},
     {
