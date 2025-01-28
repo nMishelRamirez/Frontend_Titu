@@ -28,20 +28,20 @@ export const routes: Routes = [
     { path: 'register-customer', component: RegisterComponent},
     { path: 'register-operator', component: RegisterComponentOperator},
     { path: 'register-admin', component: RegisterComponentAdmin},
-    { path: 'admin', component: Header1Component, canActivate: [roleGuard], data: { expectedRoles: ['administrador', 'operador'] }},
+    { path: 'admin', component: Header1Component},
     { path: 'reset-password', component: ChangePasswordComponent},
     { path: 'payment-process', component: MainPageComponent},
     { path: 'login', component: LoginComponent },            // Ruta para el login
     { path: 'twofactor', component: TwoFactorAuthComponent },// Ruta para twofactor
     { path: 'login-welcome', component: LoginWelcomeComponent }, // Ruta de bienvenida después del login
-    {path: 'operator/add-product', component: AddProductComponent, canActivate: [roleGuard], data: { expectedRoles: ['operador', 'administrador'] }},
+    {path: 'operator/add-product', component: AddProductComponent},
     {path: 'payment-success', component: PagoExitosoComponent}, // Ruta para el pago exitoso
     {path: 'politicas-privacidad', component: PoliticasPrivacidadComponent},
     {path: 'terminos-condiciones', component: TerminosCondicionesComponent},
     //{path: 'payment-cancel', component: PagoCanceladoComponent}, // Ruta para el pago cancelado
-    {path: 'operator/table-products', component: TableProductsComponent, canActivate: [roleGuard], data: { expectedRoles: ['operador', 'administrador'] }},
+    {path: 'operator/table-products'},
     {path: 'new-pass', component: NewPassComponent},
-    {path: 'operator/update-product', component: UpdateProductComponent, canActivate: [roleGuard], data: { expectedRoles: ['operador', 'administrador'] }},
+    {path: 'operator/update-product'},
     {
       path: '**',
       redirectTo: '',
